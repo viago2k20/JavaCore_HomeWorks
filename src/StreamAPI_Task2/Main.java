@@ -8,7 +8,7 @@ public class Main {
         List<String> names = Arrays.asList("Jack", "Connor", "Harry", "George", "Samuel", "John");
         List<String> families = Arrays.asList("Evans", "Young", "Harris", "Wilson", "Davies", "Adamson", "Brown");
         Collection<Person> persons = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10_000_000; i++) {
             persons.add(new Person(
                     names.get(new Random().nextInt(names.size())),
                     families.get(new Random().nextInt(families.size())),
@@ -17,31 +17,15 @@ public class Main {
                     Education.values()[new Random().nextInt(Education.values().length)])
             );
         }
-//        persons.forEach(System.out::println);
 
-        System.out.println();
         //Найти количество несовершеннолетних (т.е. людей младше 18 лет).
         long count = persons.stream()
                 .filter(x -> x.getAge() < 18)
                 .count();
+        
         System.out.println("Количество несовершеннолетних: " + count);
-
-//        persons.stream()
-//                .filter(x -> x.getAge() < 18)
-//                .forEach(x -> System.out.println(x.getName() + ": " + x.getAge() + " years"));
-
-//        for (Person person : persons) {
-//            if (person.getAge() < 18) {
-//                System.out.println(person.getName() + " " + person.getAge());
-//            }
-//        }
         System.out.println("*".repeat(15));
 
-//        for (Person person : persons) {
-//            if (person.getAge() >= 18 && person.getAge() <= 27) {
-//                System.out.println(person.getName() + " " + person.getFamily() + " " + person.getAge());
-//            }
-//        }
         //Получить список фамилий призывников (т.е. мужчин от 18 и до 27 лет).
         List<String> result;
         result = persons.stream()
